@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Full Frontend Challenge</title>
+ 		<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    	<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    	<link href="css/style.css" rel="stylesheet">
+        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/base/jquery-ui.css" rel="stylesheet" />
+	</head>
+	<body>
+		<section id="search-section">
+			<div id="form-wrapper">
+				<form id="search-form" action="http://www.airbnb.com/search">
+					<div id="input-wrapper-location">
+						<label for="location">Location</label>
+						<input type="text" name="location" id="location" required="required" placeholder="Type location here." /><button id="search"><span id="search-label">Search</span></button>
+					</div>
+					<div id="input-wrapper-others">
+						<div id="input-wrapper-checkin">
+							<label for="checkin">Check in</label>
+							<input type="date" name="checkin" id="checkin" />
+						</div>
+						<div id="input-wrapper-checkout">
+							<label for="checkout">Check out</label>
+							<input type="date" name="checkout" id="checkout" />
+						</div>
+						<div id="input-wrapper-guests">
+							<label for="guests">Guests</label>
+							<select name="guests" id="guests">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+								<option>7</option>
+								<option>8</option>
+								<option>9</option>
+								<option>10</option>
+								<option>11</option>
+								<option>12</option>
+								<option>13</option>
+								<option>14</option>
+								<option>15</option>
+								<option>16</option>
+							</select>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div id="search-result">
+				<div id="result-count">
+					<span id="result-count-number"></span> Results
+				</div>
+				<ol id="result-items">
+				</ol>
+			</div>
+			<script id="result-item-template" type="text/x-mustache-tmpl">
+			{{#items}}
+				<li class="result-item">
+					<div class="thumbnail">
+						<a href="http://www.airbnb.com/rooms/{{{ id }}}" title="{{ name }}"><img data-src="{{{ thumbnail_url }}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="lzld(this)" onerror="lzld(this)" alt="Picture of {{ name }}" width="114" height="74" /></a>
+						<span class="seq">{{ seq }}</span>
+					</div>
+					<div class="description">
+						<h2><a href="http://www.airbnb.com/rooms/{{{ id }}}">{{ name }}</a> <span class="favorite {{ #favorited }}favorited{{ /favorited }}"></span></h2> 
+						<address>{{ address }}</address>
+						<ul class="user-information">
+							<li class="user-pic"><img data-src="{{{ user_thumb }}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="lzld(this)" onerror="lzld(this)" width="28" height"28" alt="Posted by {{ user_id }}"/></span>
+							{{ #reviews_count }}<li class="user-reviews"><span class="badge badge-reviews">{{ reviews_count }}</span> Reviews</span>{{ /reviews_count }}
+							{{ #friends }}<li class="friends"><span class="badge badge-friends">{{ friends }}</span> Friends</span>{{ /friends }}
+							{{ #super_host }}<li class="super-host"><span class="badge badge-super-host"></span> Superhost</span>{{ /super_host }}
+						</ul>
+					</div>
+					<div class="price">
+						<span class="price-formatted">{{ price_formatted }}</span>
+						<span class="price-unit">Per Night</span>
+					</div>
+				</li>
+			{{/items}}
+			</script>
+			<div id="loading">
+				<p>Searching...</p>
+			</div>	
+		</section>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/mustache.js"></script>
+		<script type="text/javascript" src="js/lazyload.min.js"></script>
+		<script type="text/javascript" src="js/search.js"></script>
+	</body>
+</html>
